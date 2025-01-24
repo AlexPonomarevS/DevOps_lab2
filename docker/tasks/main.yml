@@ -34,3 +34,19 @@
     state: started
     enabled: yes
 
+- name: Pull timurbabs/django image
+  community.docker.docker_image:
+    name: "timurbabs/django"
+    source: pull
+
+- name: Run django_app container
+  community.docker.docker_container:
+    name: "django_app"
+    image: "timurbabs/django"
+    state: started
+    ports:
+      - "8000:8000"
+    volumes:
+      - "/home/vagrant/django-locallibrary:/app"
+    command: /bin/sh -c "pip install django==4.2 python-dotenv && gunicorn locallibrary.wsgi:application --bind 0.0.0.0:8000"
+
