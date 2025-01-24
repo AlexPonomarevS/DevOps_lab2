@@ -1,0 +1,6 @@
+---
+docker_repo_url: "https://download.docker.com/linux/ubuntu"
+docker_repo_gpg: "{{ docker_repo_url }}/gpg"
+docker_package: "docker-ce"
+docker_service: "docker"
+
